@@ -3,14 +3,14 @@ run-name: ${{ github.actor }} is learning github actions.
 on: [push]
 jobs:
   example-job:
+    name: save output
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - shell: bash
+        run: |
+            expr 1+1 > output.log
+      - name: upload output file
+        uses: actions/upload-artifact@v3
         with:
-          node-version: 15
-      - name: connect to postgresQl
-        run:  node  index.js
-        env:
-          POSTGRES_HOST: postgres
-          POSTGRES_PORT: 5432
+          name: output-log-file
+          path: output.log
