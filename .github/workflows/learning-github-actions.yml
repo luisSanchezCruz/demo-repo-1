@@ -1,20 +1,15 @@
-name: learning-github-actions
+name: enviroment test
 run-name: ${{ github.actor }} is learning github actions.
 on: [push]
 jobs:
-  test:
-    name: Test on node  ${{ matrix.node_version }} and ${{ matrix.os }}.
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node_version: ['8', '10', '12']
-        os: ['ubuntu-latest','windows-latest', 'macOS-latest']
-    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node_version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node_version }}
-
-    - name: run node app
-      run:  node ${{ github.workspace }}/index.js
+  example-job:
+  	steps: 
+  		- uses: actions/checkout@v3
+  		- uses: actions/setup-node@v3
+  			with:
+  				node-version: 15
+		- name: connect to postgresQl
+		  run:  node  index.js
+		  env:
+		  	POSTGRES_HOST: postgres
+		  	POSTGRES_PORT: 5432

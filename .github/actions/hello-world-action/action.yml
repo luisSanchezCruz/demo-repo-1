@@ -1,0 +1,10 @@
+name: "Example"
+description: "Receives files and generates output"
+inputs:
+  file-path:
+    description: 'path to the test scriptp'
+    required: true
+    default: "test-file.js"
+outputs:
+  results-file:
+    description: "path to the results file"
