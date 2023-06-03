@@ -3,13 +3,13 @@ run-name: ${{ github.actor }} is learning github actions.
 on: [push]
 jobs:
   example-job:
-  	steps: 
-  		- uses: actions/checkout@v3
-  		- uses: actions/setup-node@v3
-  			with:
-  				node-version: 15
-		- name: connect to postgresQl
-		  run:  node  index.js
-		  env:
-		  	POSTGRES_HOST: postgres
-		  	POSTGRES_PORT: 5432
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 15
+      - name: connect to postgresQl
+        run:  node  index.js
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
