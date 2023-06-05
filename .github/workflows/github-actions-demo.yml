@@ -2,7 +2,7 @@ name: Download artifact
 run-name: ${{ github.actor }} is downloading artifacts
 on: [push]
 jobs: 
-  download artifact:
+  download-artifact:
     runs-on: ubuntu-latest
     steps: 
       - run: echo "Download artifact sample"
