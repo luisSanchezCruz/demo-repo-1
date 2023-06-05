@@ -5,16 +5,9 @@ jobs:
   example-job:
     name: save output
     runs-on: ubuntu-latest
-    steps:
-      - shell: bash
-        run: |
-            expr 1 + 1 + 3 > output.log
-      - name: upload output file
-        uses: actions/upload-artifact@v3
-        with:
-          name: output-log-file
-          path: output.log
-      - name: download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: output-log-file      
+    steps: 
+      - name: failing test
+        id: demo
+        run: exit 1
+      - name: the demo step has failed
+        if: ${{ failure() && steps.demo.conclusion == 'failure' }}
